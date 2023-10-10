@@ -1,6 +1,5 @@
 
 package ApplicationCollection;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -36,7 +35,7 @@ public class CoronaTrackerImpl {
 		int custCoronaInjectDose = 0;
 		char custVerifyDose;
 		boolean end = false;
-	    boolean validated = false;
+		boolean validated = false;
 
 		// create classes obj
 		Scanner sc = new Scanner(System.in);
@@ -44,8 +43,8 @@ public class CoronaTrackerImpl {
 
 		// while loop
 		while (!end) {
-			
-			int count=0;
+
+			int count = 1;
 			int choice = 0;
 			try {
 				System.out.println("\n\t 1. For Add New Costumer ");
@@ -56,27 +55,31 @@ public class CoronaTrackerImpl {
 			} catch (Exception e) {
 				System.out.println("\n\t\t" + e.getMessage());
 			}
-			if (choice==1) {
-				count++;
-			}
 			try {
 				// switch case
 				switch (choice) {
 				case 1:
 					System.out.print("\n\t Are You Corona Vecinated or Not (Yes/No) : ");
 					char vacinatedStatus = sc.next().charAt(0);
+					sc.nextLine();
 					if (vacinatedStatus == 'y' || vacinatedStatus == 'Y') {
-						System.out.println("\n\t\t Costumer Serial No : 000"+count);
+						
+						System.out.println("\n\t\t Costumer Serial No : 000" + count);
 						System.out.println();
+
 						System.out.print("\n\t Enter Adhar Number :");
 						custAdharNo = sc.nextLong();
 						sc.nextLine();
+						
 						System.out.print("\t Enter Costumer Name :");
 						custName = sc.nextLine();
+						
 						System.out.print("\t Enter Costumer Mobile No :");
 						custMobileNo = sc.nextLong();
+
 						System.out.print("\t How many Dose you are taken :");
 						custCoronaInjectDose = sc.nextInt();
+
 						try {
 							// validate fields
 							validated = ct.validation(custAdharNo, custMobileNo);
@@ -88,6 +91,7 @@ public class CoronaTrackerImpl {
 								ct.setCostumerSerialNo(count);
 								// add costumer
 								list.add(ct);
+								++count;
 								System.out.println("\n\t Record Added Successfull...");
 							}
 						} catch (Exception e) {
@@ -111,8 +115,10 @@ public class CoronaTrackerImpl {
 // print value using for loop
 					for (Iterator iterator = list.iterator(); iterator.hasNext();) {
 						CoronaTracker coronaTracker = (CoronaTracker) iterator.next();
-		
-						System.out.println("\t"+"000"+ coronaTracker.getCostumerSerialNo() + "\t\t"+coronaTracker.getCustAdharNo() +  "\t" + coronaTracker.getCustName() + "\t" + coronaTracker.getCustMobileNo() + "\t  " + coronaTracker.getCustCoronaInjectDose());
+
+						System.out.println("\t" + "000" + coronaTracker.getCostumerSerialNo() + "\t    "
+								+ coronaTracker.getCustAdharNo() + "\t" + coronaTracker.getCustName() + "\t"
+								+ coronaTracker.getCustMobileNo() + "\t  " + coronaTracker.getCustCoronaInjectDose());
 					}
 
 //print value using while loop
