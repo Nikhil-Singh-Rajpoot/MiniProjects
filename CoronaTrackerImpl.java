@@ -41,7 +41,7 @@ public class CoronaTrackerImpl {
 		boolean end = false;
 		String custBloodGroupString;
 	  	String custEmailId;
-	  	String custRegNumber;
+	  	StringBuffer custRegNumber;
 
 		// ----------create classes obj-------------
 		Scanner sc = new Scanner(System.in);

@@ -10,7 +10,7 @@ public class CoronaTracker {
 	private int costumerSerialNo;
 	private String custBloodGroupString;
 	private String custEmailId;
-	public static int count = 100;
+	public static int count = 1000;
 	
 	//---------------------------------Override toString method--------------------------------------------------
 
@@ -100,18 +100,19 @@ public class CoronaTracker {
 	
 	
 	//----------------------------------- Generate Registration number;--------------------------------------------
-	public String custRegristrationNo(long custAdharNo) {
+	public StringBuffer custRegristrationNo(long custAdharNo) {
 		String adharNo = String.valueOf(custAdharNo);
-		String custRegNo = "C";
-		// String tempadhar = null;
+		StringBuffer custRegstrationNo  = new StringBuffer();
+		custRegstrationNo.append("C");
+		String tempadhar ;
 		count += 1;
-		for (int i = 0; i < 4; i++) {
-			custRegNo += adharNo.charAt(i);
+		for (int i =8; i <12; i++) {
+			custRegstrationNo.append( adharNo.charAt(i));
 		}
 		// concate String
-		custRegNo += count;
+		custRegstrationNo.append(count);
 
-		return custRegNo;
+		return custRegstrationNo;
 	}//-------------------------------- end of custRegNumber method-------------------------------------------
 
 	
